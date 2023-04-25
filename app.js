@@ -60,7 +60,7 @@ const main = () => {
 /**
  * 
  */
-function toggelClass(led_state){
+function toggleClass(led_state){
   if(led_state){
     addClass('#ff0000');
   }else{
