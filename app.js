@@ -3,17 +3,28 @@
 const UUID = '19b10000-e8f2-537e-4f6c-d104768a1214';
 const SERVICE_UUID = '19b10001-e8f2-537e-4f6c-d104768a1214';
 let g_characteristic = {};
-const $light = document.querySelector('#light');
+const $light = document.queryaSelector('#light');
+const $dark = document.queryaSelector('#dark');
 const $bulb = document.querySelector('.bulb');
 
-const ledToggel = () => {
+const lightOn = () => {
   g_characteristic.readValue()
-  .then((val) => {
-    let led_state = val.getUint8(0); //値読み取り
-    led_state = led_state ? 0 : 1;
-    g_characteristic.writeValue(new Uint8Array([led_state]));
-    toggelClass(led_state);
-  })
+    .then((val) => {
+      let led_state = val.getUint8(0);
+      led_state = 1; // LEDを点灯するため、常に 1 をセットする
+      g_characteristic.writeValue(new Uint8Array([led_state]));
+      toggleClass(led_state);
+    })
+}
+
+const darkOn = () => {
+  g_characteristic.readValue()
+    .then((val) => {
+      let led_state = val.getUint8(0);
+      led_state = 0; // LEDを消灯するため、常に 0 をセットする
+      g_characteristic.writeValue(new Uint8Array([led_state]));
+      toggleClass(led_state);
+    })
 }
 
 const main = () => {
@@ -36,8 +47,9 @@ const main = () => {
     })
   .then(characteristic => {
       g_characteristic = characteristic;
-      $light.removeEventListener('click',main);
-      $light.addEventListener('click',ledToggel);
+      $light.removeEventListener('click', main);
+      $light.addEventListener('click', lightOn); // "light" ボタンがクリックされたときに lightOn 関数を呼び出すように変更
+      $dark.addEventListener('click', darkOn);   // "dark" ボタンがクリックされたときに darkOn 関数を呼び出すように追加
       return characteristic;
     })
   .catch(error => {
