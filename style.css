@@ -57,6 +57,20 @@
     background: #50e2c2;
     color: white;
   }
+  #dark {
+    cursor: pointer;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 20px;
+    width: 20%;
+    border: 2px #50e2c2 solid;
+    color: #50e2c2;
+    letter-spacing: 3px;
+  }
+  #dark:hover {
+    background: #50e2c2;
+    color: white;
+  }
   
   h1, p {
     color: #50e2c2;
