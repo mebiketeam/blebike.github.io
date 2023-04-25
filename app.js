@@ -3,8 +3,8 @@
 const UUID = '19b10000-e8f2-537e-4f6c-d104768a1214';
 const SERVICE_UUID = '19b10001-e8f2-537e-4f6c-d104768a1214';
 let g_characteristic = {};
-const $light = document.queryaSelector('#light');
-const $dark = document.queryaSelector('#dark');
+const $light = document.querySelector('#light');
+const $dark = document.querySelector('#dark');
 const $bulb = document.querySelector('.bulb');
 
 const lightOn = () => {
