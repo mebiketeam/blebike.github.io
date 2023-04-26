@@ -5,6 +5,7 @@ const SERVICE_UUID = '19b10001-e8f2-537e-4f6c-d104768a1214';
 let g_characteristic = {};
 const $light = document.querySelector('#light');
 const $dark = document.querySelector('#dark');
+const $link = document.querySelector('#link');
 const $bulb = document.querySelector('.bulb');
 
 const lightOn = () => {
@@ -81,3 +82,4 @@ function addClass(color){
 }
 
 $light.addEventListener('click', main);
+$link.addEventListener('click', main);
